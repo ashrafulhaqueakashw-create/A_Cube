@@ -228,14 +228,17 @@ The application follows a strict 11-phase build sequence ensuring that foundatio
 
 ---
 
-### Phase 11: End-to-End Build Verification & Production Deployment
-* **Objective:** Validate end-to-end production readiness and prepare deployment targets.
+### Phase 11: End-to-End Build Verification & 100% Free Production Deployment
+* **Objective:** Validate end-to-end production readiness and configure 100% free hosting infrastructure (Vercel + Render + MongoDB Atlas).
 * **Actions:**
   1. Execute `npm run build` in `/server` to verify TypeScript compilation exits with code 0.
   2. Execute `npm run build` in `/client` to verify Vite bundle optimization succeeds with code 0.
-  3. Execute full monorepo build from root: `npm run build` (`npm run build:server && npm run build:client`).
-  4. Verify `.env.example` templates and deployment documentation in [README.md](file:///g:/A_Cube/README.md).
-* **Verification Gate:** Clean build output; all automated checks pass.
+  3. Formulate SPA rewrite rules in `client/vercel.json` and root `vercel.json` to prevent 404s on route refresh.
+  4. Formulate Infrastructure-as-Code manifest in `render.yaml` for zero-cost Render Web Service deployments.
+  5. Configure dynamic Axios base URL (`import.meta.env.VITE_API_URL || '/api/v1'`) and cross-domain production cookie security (`sameSite: 'none'`, `secure: true`) for seamless Vercel-to-Render communication.
+  6. Add MongoDB Atlas M0 (512MB free) cluster provisioning and one-time database seeding instructions.
+  7. Formulate a step-by-step zero-cost deployment manual in [README.md](file:///g:/A_Cube/README.md).
+* **Verification Gate:** Clean build output; all automated checks pass; production configuration handles cross-origin cookies and dynamic routing.
 
 ---
 

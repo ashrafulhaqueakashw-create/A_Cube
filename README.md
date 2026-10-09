@@ -332,26 +332,99 @@ npm run dev
 
 ---
 
-## 🚢 10. Production Deployment Guide
+## 🚢 10. 100% Free Production Deployment Guide (Vercel + Render + MongoDB Atlas)
 
-### A. Deploy Database (MongoDB Atlas)
-1. Create a free cluster on [MongoDB Atlas](https://www.mongodb.com/atlas).
-2. Create a database user and allow your server IP (or `0.0.0.0/0`).
-3. Obtain the connection string `mongodb+srv://...` and set `MONGODB_URI`.
+This entire platform can be hosted completely **FREE** forever with zero monthly charges using:
+* **Frontend:** [Vercel](https://vercel.com) (Hobby Free Tier)
+* **Backend:** [Render](https://render.com) (Free Web Service)
+* **Database:** [MongoDB Atlas](https://www.mongodb.com/atlas) (M0 Free Tier, 512MB)
 
-### B. Deploy Server (Render or Railway)
-1. Connect your Git repository to **Render** (Web Service) or **Railway**.
-2. Root directory: `server`
-3. Build Command: `npm install && npm run build`
-4. Start Command: `npm run start` (runs `node dist/index.js`)
-5. Add all environment variables from `server/.env.example`.
+---
 
-### C. Deploy Frontend (Vercel or Netlify)
-1. Connect your Git repository to **Vercel** or **Netlify**.
-2. Root directory: `client`
-3. Build Command: `npm run build`
-4. Output Directory: `dist`
-5. Configure rewrites for Single Page Application routing (already supported via Vite & standard static hosting).
+### Step 1: Push Project to GitHub
+
+1. Create a new repository on your GitHub account (e.g. `a-cube-academy`).
+2. Run these commands from your local `A_Cube` root directory:
+   ```bash
+   git remote add origin https://github.com/<your-username>/<your-repo-name>.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+---
+
+### Step 2: Set Up Free Database (MongoDB Atlas)
+
+1. Sign up / Log in to [MongoDB Atlas](https://www.mongodb.com/atlas) (Free).
+2. Click **Create Deployment** → Select **M0 (Free)** cluster (AWS or Google Cloud region).
+3. **Database Access:** Create a user (e.g., `acubeadmin`) with a secure password.
+4. **Network Access:** Add IP Address `0.0.0.0/0` (Allow Access from Anywhere) so Render can connect.
+5. Click **Connect** → **Drivers** (Node.js) → Copy the connection string:
+   `mongodb+srv://acubeadmin:<password>@cluster0.xxxx.mongodb.net/acube-academy?retryWrites=true&w=majority`
+
+---
+
+### Step 3: Deploy Backend on Render (Free Web Service)
+
+1. Sign up / Log in to [Render](https://render.com) using your GitHub account.
+2. Click **New +** → **Web Service** → Select your `a-cube-academy` GitHub repository.
+3. Configure settings:
+   * **Name:** `a-cube-academy-api`
+   * **Region:** Singapore / Frankfurt / Oregon (any free region)
+   * **Root Directory:** `server`
+   * **Runtime:** `Node`
+   * **Build Command:** `npm install && npm run build`
+   * **Start Command:** `npm run start`
+   * **Instance Type:** `Free`
+4. Add **Environment Variables** (under *Environment* tab):
+   * `NODE_ENV` = `production`
+   * `PORT` = `10000`
+   * `MONGODB_URI` = *(Your MongoDB Atlas URI from Step 2)*
+   * `JWT_ACCESS_SECRET` = `acube_super_access_secret_key_prod_32_chars!`
+   * `JWT_REFRESH_SECRET` = `acube_super_refresh_secret_key_prod_32_chars!`
+   * `CLIENT_URL` = `https://a-cube-academy.vercel.app` *(or your Vercel URL once generated)*
+   * `ADMIN_EMAIL` = `admin@acube.academy`
+   * `ADMIN_PASSWORD` = `AdminPass123!`
+5. Click **Create Web Service**. Wait 2-3 minutes for deployment to finish.
+6. Copy your Render backend URL (e.g., `https://a-cube-academy-api.onrender.com`).
+
+---
+
+### Step 4: Seed Database with Leaflet Data (One-Time)
+
+To seed your live Atlas database with authentic teachers, subjects, batches, and sample materials:
+1. Open your local terminal in `g:\A_Cube\server`.
+2. Temporarily set `MONGODB_URI` in `server/.env` to your Atlas URI, then run:
+   ```bash
+   npm run seed
+   ```
+3. Your live Atlas database is now fully populated!
+
+---
+
+### Step 5: Deploy Frontend on Vercel (Free)
+
+1. Sign up / Log in to [Vercel](https://vercel.com) using your GitHub account.
+2. Click **Add New...** → **Project** → Import your `a-cube-academy` repository.
+3. In the project setup screen:
+   * **Root Directory:** Click *Edit* and select **`client`**.
+   * **Framework Preset:** `Vite` (automatically detected).
+   * **Build Command:** `npm run build`
+   * **Output Directory:** `dist`
+4. In **Environment Variables**:
+   * Name: `VITE_API_URL`
+   * Value: `https://a-cube-academy-api.onrender.com/api/v1` *(Your Render backend URL from Step 3)*
+5. Click **Deploy**.
+6. In about 30 seconds, Vercel will give you a live production URL (e.g. `https://a-cube-academy.vercel.app`)!
+
+---
+
+### Step 6: Final Verification
+* Open your Vercel URL.
+* Test language toggle (`[ বাং | EN ]`).
+* Test Teacher cards and poster preview modals.
+* Log in as Admin (`admin@acube.academy` / `AdminPass123!`) at `/admin/login`.
+* Log in as Student (`student@acube.academy` / `StudentPass123!`) at `/login`.
 
 ---
 

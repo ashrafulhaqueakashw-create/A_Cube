@@ -249,8 +249,9 @@ A 4-step horizontal visual timeline (collapses vertically on mobile):
 ## 4. Non-Functional Requirements (NFR)
 
 * **NFR-SEC-01 (Zero Clear-Text Passwords):** All passwords encrypted using Bcrypt with 12 salt rounds.
-* **NFR-SEC-02 (Cookie Hardening):** Tokens stored exclusively in `httpOnly`, `secure` (production), `sameSite: 'strict'` cookies to mitigate XSS and CSRF attack vectors.
+* **NFR-SEC-02 (Cookie Hardening):** Tokens stored exclusively in `httpOnly`, `secure` (production) cookies. Supports cross-origin production hosting with `sameSite: 'none'` between Vercel and Render while enforcing `sameSite: 'strict'` in local/same-origin setups.
 * **NFR-SEC-03 (Private Storage & Presigned URLs):** Educational assets are stored in private S3 buckets. Public URLs are never exposed; download links expire automatically after 3600 seconds.
+* **NFR-DEP-01 (100% Free Tier Hosting):** Operates entirely within persistent zero-cost tiers: Vercel Hobby (Frontend CDN & Edge), Render Web Service (Backend API), and MongoDB Atlas M0 (512MB Cloud Database).
 * **NFR-PERF-01 (Sub-Second Page Loads):** Client bundle code-split with Vite; cached API queries with TanStack Query (5-minute stale window).
 * **NFR-RESP-01 (Mobile-First Responsiveness):** Flawless presentation across 320px, 375px, 768px, 1024px, and 1440px+ without horizontal scrollbars.
 * **NFR-A11Y-01 (Accessibility):** WCAG 2.1 AA compliant color contrast ratios, screen-reader accessible Radix UI dialogs/modals, and keyboard-navigable forms.

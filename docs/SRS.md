@@ -202,4 +202,5 @@ A-Cube Academy is an autonomous, self-contained web platform operating under a c
 | **REQ-UI-01** | Layout Symmetry Test | 7-item leaflet feature cards render in balanced 4+3 centered layout without orphaned rows. | **PASSED** (Flexbox Centered) |
 | **REQ-AUTH-07** | Auth Loop Guard & Resilience | Bypasses 401 refresh on auth endpoints; sets JSON rate limit error payloads; cross-portal redirect to dashboard. | **PASSED** (Suite 4 & Axios) |
 | **REQ-TC-01** | Teacher Cards & Poster Lightbox | Official poster graphics rendered in Hero strip, Subject cards, and Teacher section with interactive lightbox modal. | **PASSED** (React & Radix Dialog) |
+| **REQ-DEP-01** | 100% Free Production Deployment | Zero-cost deployment architecture (Vercel + Render + MongoDB Atlas M0) with cross-origin cookie authentication. | **PASSED** (Configured & Verified) |
 | **MNT-01** | Build Verification | `npm run build` runs `tsc` on server and client, exiting with code 0 without type errors. | **PASSED** (Zero Errors) |

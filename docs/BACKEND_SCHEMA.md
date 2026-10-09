@@ -605,3 +605,13 @@ Key-value pair store for public academy configurations.
 | **Administrator** | `admin@acube.academy` | `AdminPass123!` | `active` | `/admin/login` (or `/login`) |
 | **Student (Demo)** | `student@acube.academy` | `StudentPass123!` | `active` | `/login` |
 
+---
+
+## 6. Cloud Database Hosting & Production Seeding (MongoDB Atlas)
+
+The production database is hosted on **MongoDB Atlas** M0 Free Tier (512MB storage):
+* **Cluster Spec:** Shared M0 sandbox (no credit card required).
+* **Connection Protocol:** `mongodb+srv://<username>:<password>@<cluster>.mongodb.net/acube-academy?retryWrites=true&w=majority`.
+* **Network Access:** Whitelist `0.0.0.0/0` to allow Render backend dynamic IPs to connect.
+* **Production Seed Command:** Run `npm run seed` in `/server` with Atlas `MONGODB_URI` to populate teachers, subjects, batches, and institute settings.
+

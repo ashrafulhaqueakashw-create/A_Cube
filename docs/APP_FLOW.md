@@ -250,4 +250,6 @@ flowchart TD
 | **Expired Refresh Token** | User returns after 7 days of inactivity. | Refresh attempt fails (HTTP 401); client clears auth state and smoothly redirects to `/login`. |
 | **Attempted S3 Tampering** | User attempts to guess or scrape direct S3 storage URLs. | S3 bucket blocks public read requests with HTTP 403 Forbidden. Downloads must originate via `/api/v1/materials/:id/download`. |
 | **File Exceeds 50MB** | Admin drops an oversized video/zip file. | Client-side `FileUpload` validator halts upload immediately with notice: *"File size exceeds 50MB limit"*; prevents wasted network bandwidth. |
+| **Cross-Origin Cookie Security** | Frontend on `*.vercel.app` connects to backend on `*.onrender.com`. | Backend issues `sameSite: 'none'` and `secure: true` cookies in production with dynamic CORS origin reflection; browser accepts and stores authentication cookies across domains. |
+| **SPA Route Refresh on Vercel** | User directly refreshes `/admin/dashboard` or `/login`. | `client/vercel.json` rewrites all requests to `/index.html`, eliminating 404 Not Found errors on client-side routing. |
 | **Non-Existent URL** | User navigates to `/unknown-path`. | Catch-all `*` route captures request and renders [NotFoundPage.tsx](file:///g:/A_Cube/client/src/pages/NotFoundPage.tsx) with a *"Return to Home"* button. |

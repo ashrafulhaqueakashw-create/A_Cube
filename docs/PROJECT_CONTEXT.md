@@ -110,6 +110,11 @@ The teaching faculty consists of qualified university students/graduates from pr
   - **Leaflet Feature Grid Symmetrical Layout:** Refactored `FeaturesSection` from a broken 4-col grid with an orphaned 3rd row into a mathematically balanced 4+3 centered flex layout (`flex flex-wrap justify-center gap-6`), aligning `Free Demo Class`, `Smart Digital Classroom`, and `Special Exam Preparation` side-by-side in Row 2 directly under Row 1.
   - **Authentication Pipeline Stability:** Refactored Axios interceptor to exclude auth endpoints (`/auth/me`, `/auth/login`, `/auth/admin/login`) from refresh loops, eliminating infinite reload loops on unauthenticated views. Relaxed development rate limit thresholds and formatted responses with structured JSON envelopes. Normalized user payloads across `authService` for seamless session hydration.
   - **Official Teacher Poster Cards & Punchlines:** Integrated high-resolution teacher poster graphics (`/images/teachers/`) into the Hero mentor strip, Subject cards, and Teacher section. Added signature slogans (*"Physics নিয়ে no চিন্তা"*, *"এখন Mathematics হবে আরও Easy"*, *"HTML থেকে Programming, ICT এখন একদম সহজ"*), real experience badges (`3-4+ years`), and an interactive high-resolution poster modal lightbox.
+* **Production Hosting Architecture (100% Free Tier):**
+  - **Frontend SPA:** Hosted on **Vercel** (Hobby Free tier), rewrite routing via `client/vercel.json`.
+  - **Backend REST API:** Hosted on **Render** (Free Web Service tier), defined via `render.yaml`.
+  - **Database Cluster:** Hosted on **MongoDB Atlas** (M0 Free tier, 512MB storage).
+  - **Cross-Domain Cookie Security:** Configured with `sameSite: 'none'` and `secure: true` in production, allowing seamless auth session persistence across `*.vercel.app` and `*.onrender.com`.
 * **Default Admin Credentials:**
   - Email: `admin@acube.academy`
   - Password: `AdminPass123!`

@@ -295,16 +295,25 @@ The `/api/v1/teachers` endpoint serves instructor profiles extended with rich pr
                                               │
                       ┌───────────────────────┴───────────────────────┐
                       │                                               │
-         [Vercel / Netlify]                                   [Render / Railway]
-        (Frontend Client SPA)                                 (Backend Node API)
-         Directory: /client                                   Directory: /server
-         Build: npm run build                                 Build: npm run build
-         Output: dist                                         Start: npm run start
+             [Vercel (Hobby Free)]                           [Render (Free Web)]
+            (Frontend Client SPA)                             (Backend Node API)
+             Directory: /client                                Directory: /server
+             Build: npm run build                              Build: npm install && npm run build
+             Output: dist                                      Start: npm run start
+             Config: client/vercel.json                        Config: render.yaml
                       │                                               │
                       │                                 ┌─────────────┴─────────────┐
                       │                                 │                           │
                       ▼                                 ▼                           ▼
-          [Global Edge CDN (HTTPS)]           [MongoDB Atlas]             [Cloudflare R2 / S3]
-          - Single Page App Routing           - Managed Replica Set       - Private Cloud Bucket
-          - Assets Gzip / Brotli              - Daily Automated Backups   - Presigned Assets
+          [Global Edge CDN (HTTPS)]           [MongoDB Atlas M0 Free]       [Cloudflare R2 / S3]
+          - Single Page App Routing           - 512 MB Storage Free         - Private Cloud Bucket
+          - Assets Gzip / Brotli              - Connection String URI       - Zero-trust Presigned URLs
 ```
+
+### 7.1 Cross-Domain Production Auth & CORS Strategy
+1. **Frontend Direct Routing:** `client/src/lib/axios.ts` adapts dynamically via `import.meta.env.VITE_API_URL` pointing to the Render backend (`https://a-cube-academy-api.onrender.com/api/v1`).
+2. **Cross-Origin Cookie Security:** In production (`NODE_ENV === 'production'`), authentication cookies (`accessToken`, `refreshToken`) use `sameSite: 'none'` and `secure: true`, enabling secure cookie dispatch between `vercel.app` and `onrender.com`.
+3. **CORS Allowlist:** Backend Express middleware permits requests matching `env.CLIENT_URL` and all dynamic `*.vercel.app` preview domains with `credentials: true`.
+4. **Declarative Infrastructure (`render.yaml` & `vercel.json`):**
+   * `client/vercel.json` enforces SPA rewrites ensuring route refreshes (`/admin/dashboard`, `/login`) never yield HTTP 404s.
+   * `render.yaml` declares the backend web service specifications, health check path (`/health`), and environment variable contracts.
