@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import dns from 'dns';
 import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
@@ -12,6 +13,9 @@ dotenv.config();
 
 const seed = async () => {
   try {
+    try {
+      dns.setServers(['8.8.8.8', '1.1.1.1']);
+    } catch (_) {}
     await mongoose.connect(process.env.MONGODB_URI as string);
     console.log('MongoDB Connected for Seeding');
 
