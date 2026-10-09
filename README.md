@@ -386,26 +386,20 @@ This entire platform can be hosted completely **FREE** forever with zero monthly
    * `ADMIN_EMAIL` = `admin@acube.academy`
    * `ADMIN_PASSWORD` = `AdminPass123!`
 5. Click **Create Web Service**. Wait 2-3 minutes for deployment to finish.
-6. Copy your Render backend URL (e.g., `https://a-cube-academy-api.onrender.com`).
+6. Copy your Render backend URL: `https://a-cube.onrender.com`.
 
 ---
 
 ### Step 4: Seed Database with Leaflet Data (One-Time)
 
-To seed your live Atlas database with authentic teachers, subjects, batches, and sample materials:
-1. Open your local terminal in `g:\A_Cube\server`.
-2. Temporarily set `MONGODB_URI` in `server/.env` to your Atlas URI, then run:
-   ```bash
-   npm run seed
-   ```
-3. Your live Atlas database is now fully populated!
+The live database has been seeded with authentic teachers, subjects, batches, and sample materials via Atlas connection!
 
 ---
 
 ### Step 5: Deploy Frontend on Vercel (Free)
 
 1. Sign up / Log in to [Vercel](https://vercel.com) using your GitHub account.
-2. Click **Add New...** → **Project** → Import your `a-cube-academy` repository.
+2. Click **Add New...** → **Project** → Import your `A_Cube` repository.
 3. In the project setup screen:
    * **Root Directory:** Click *Edit* and select **`client`**.
    * **Framework Preset:** `Vite` (automatically detected).
@@ -413,7 +407,7 @@ To seed your live Atlas database with authentic teachers, subjects, batches, and
    * **Output Directory:** `dist`
 4. In **Environment Variables**:
    * Name: `VITE_API_URL`
-   * Value: `https://a-cube-academy-api.onrender.com/api/v1` *(Your Render backend URL from Step 3)*
+   * Value: `https://a-cube.onrender.com/api/v1`
 5. Click **Deploy**.
 6. In about 30 seconds, Vercel will give you a live production URL (e.g. `https://a-cube-academy.vercel.app`)!
 
