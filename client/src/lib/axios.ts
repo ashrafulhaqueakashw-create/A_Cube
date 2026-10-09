@@ -1,7 +1,9 @@
 import axios, { AxiosError } from 'axios';
 
+const API_BASE_URL = (import.meta.env.VITE_API_URL as string)?.replace(/\/+$/, '') || '/api/v1';
+
 const api = axios.create({
-  baseURL: '/api/v1',
+  baseURL: API_BASE_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -27,7 +29,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401 && originalRequest && !(originalRequest as any)._retry && !isAuthEndpoint) {
       (originalRequest as any)._retry = true;
       try {
-        await axios.post('/api/v1/auth/refresh-token', {}, { withCredentials: true });
+        await axios.post(`${API_BASE_URL}/auth/refresh-token`, {}, { withCredentials: true });
         return api(originalRequest);
       } catch (refreshError) {
         const path = window.location.pathname;

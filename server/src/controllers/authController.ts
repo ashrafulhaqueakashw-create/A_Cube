@@ -7,16 +7,17 @@ import { env } from '../config/env.js';
 import crypto from 'crypto';
 
 const setCookies = (res: Response, accessToken: string, refreshToken: string) => {
+  const isProd = env.NODE_ENV === 'production';
   res.cookie('accessToken', accessToken, {
     httpOnly: true,
-    secure: env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    secure: isProd,
+    sameSite: isProd ? 'none' : 'lax',
     maxAge: 15 * 60 * 1000 // 15 mins
   });
   res.cookie('refreshToken', refreshToken, {
     httpOnly: true,
-    secure: env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    secure: isProd,
+    sameSite: isProd ? 'none' : 'lax',
     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
   });
 };
@@ -98,8 +99,17 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
     if (token) {
       await User.findOneAndUpdate({ refreshToken: token }, { refreshToken: null });
     }
-    res.clearCookie('accessToken');
-    res.clearCookie('refreshToken');
+    const isProd = env.NODE_ENV === 'production';
+    res.clearCookie('accessToken', {
+      httpOnly: true,
+      secure: isProd,
+      sameSite: isProd ? 'none' : 'lax'
+    });
+    res.clearCookie('refreshToken', {
+      httpOnly: true,
+      secure: isProd,
+      sameSite: isProd ? 'none' : 'lax'
+    });
     res.json({ success: true, message: 'Logged out successfully' });
   } catch (error) { next(error); }
 };

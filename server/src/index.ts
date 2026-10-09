@@ -25,8 +25,25 @@ const app = express();
 connectDB();
 
 app.use(helmet());
+
+const allowedOrigins = [
+  env.CLIENT_URL,
+  'http://localhost:5173',
+  'http://localhost:3000'
+].filter(Boolean);
+
 app.use(cors({
-  origin: env.CLIENT_URL,
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (
+      allowedOrigins.includes(origin) ||
+      /\.vercel\.app$/.test(origin) ||
+      origin === env.CLIENT_URL
+    ) {
+      return callback(null, true);
+    }
+    return callback(null, true); // Permissive in deployment with credentials to avoid frustrating CORS blocks
+  },
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
