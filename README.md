@@ -373,7 +373,7 @@ This entire platform can be hosted completely **FREE** forever with zero monthly
    * **Region:** Singapore / Frankfurt / Oregon (any free region)
    * **Root Directory:** `server`
    * **Runtime:** `Node`
-   * **Build Command:** `npm install && npm run build`
+   * **Build Command:** `npm install --include=dev && npm run build`
    * **Start Command:** `npm run start`
    * **Instance Type:** `Free`
 4. Add **Environment Variables** (under *Environment* tab):
