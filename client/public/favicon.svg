@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a5f" />
+      <stop offset="50%" stop-color="#0f2744" />
+      <stop offset="100%" stop-color="#0a192f" />
+    </linearGradient>
+
+    <!-- Cube Top Gradient -->
+    <linearGradient id="cubeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+
+    <!-- Cube Left Gradient -->
+    <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <!-- Cube Right Gradient -->
+    <linearGradient id="cubeRight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <!-- Gold Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base -->
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="url(#bgGrad)" stroke="#38bdf8" stroke-width="3" stroke-opacity="0.3" />
+
+  <!-- Isometric 3D Cube (A-Cube) -->
+  <g transform="translate(64, 58)">
+    <!-- Top Face -->
+    <polygon points="0,-36 34,-17 0,2 -34,-17" fill="url(#cubeTop)" stroke="#7dd3fc" stroke-width="1.5" />
+    
+    <!-- Left Face -->
+    <polygon points="-34,-17 0,2 0,40 -34,21" fill="url(#cubeLeft)" stroke="#38bdf8" stroke-width="1.5" />
+    
+    <!-- Right Face -->
+    <polygon points="0,2 34,-17 34,21 0,40" fill="url(#cubeRight)" stroke="#60a5fa" stroke-width="1.5" />
+
+    <!-- Center Monogram "A³" -->
+    <!-- Stylized "A" -->
+    <path d="M-12,24 L0,-4 L12,24 M-7,14 L7,14" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Superscript "3" (Cube) -->
+    <path d="M15,-2 Q20,-6 23,-2 Q21,1 17,2 Q22,3 24,7 Q21,11 15,9" fill="none" stroke="url(#goldGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Academic Graduation Cap Accent on Top -->
+  <g transform="translate(64, 21)">
+    <polygon points="0,-10 20,-2 0,6 -20,-2" fill="url(#goldGrad)" stroke="#ca8a04" stroke-width="1" />
+    <!-- Cap Under-band -->
+    <path d="M-10,1 C-10,6 10,6 10,1" fill="none" stroke="url(#goldGrad)" stroke-width="2" />
+    <!-- Tassel -->
+    <path d="M14,0 L18,8 L17,14" fill="none" stroke="#fef08a" stroke-width="1.5" stroke-linecap="round" />
+    <circle cx="17" cy="14" r="1.5" fill="#fef08a" />
+  </g>
+</svg>

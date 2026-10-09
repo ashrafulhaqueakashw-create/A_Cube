@@ -224,7 +224,10 @@ The application follows a strict 11-phase build sequence ensuring that foundatio
   8. Implement interactive high-resolution poster lightbox modal in Teacher section with signature punchlines and experience chips.
   9. Validate WCAG 2.1 AA color contrast ratios for text on dark navy and sky blue backgrounds.
   10. Ensure accessible keyboard navigation and ARIA attributes on modals, tabs, and form controls.
-* **Verification Gate:** Flawless mobile rendering on smartphone viewports; language toggle updates UI strings instantly; feature section displays in clean 4+3 balance; teacher promotional cards and punchlines render crisply with functional modal previews; admin and student logins authenticate reliably.
+  11. Implement branded 3D vector logo and browser tab favicon (`/logo.svg`, `/favicon.svg`) for authentic identity in browser tabs and bookmarks.
+  12. Stabilize mobile navigation header with solid frosted glass styling (`bg-white/95 backdrop-blur-md`) and `whitespace-nowrap` brand text, eliminating text slicing/clipping on mobile viewport scrolling.
+  13. Streamline Hero section visual hierarchy by removing redundant mentor panel and expanding top/bottom responsive padding (`pt-28 sm:pt-32 pb-16 md:pb-24`).
+* **Verification Gate:** Flawless mobile rendering on smartphone viewports (iPhone, Android); browser tab displays authentic A-Cube vector logo; navbar text remains fully visible without slicing across all scroll offsets; feature section displays in clean 4+3 balance; teacher promotional cards and punchlines render crisply with functional modal previews; admin and student logins authenticate reliably.
 
 ---
 

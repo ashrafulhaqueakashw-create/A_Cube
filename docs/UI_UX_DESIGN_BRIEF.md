@@ -126,8 +126,9 @@ The platform pairs **Hind Siliguri** (a clean, highly legible Bengali typeface) 
 ## 5. Screen-by-Screen Layout Specifications
 
 ### 5.1 Public Landing Page (`/`)
-* **Navbar:** Frosted glass effect (`backdrop-blur-md bg-white/90 border-b border-slate-100`), logo on the left, centered navigation anchors with bilingual translations, segmented interactive language pill toggle (`[ বাং | EN ]`) with active state and localStorage persistence, and "Student Login" / "Admin Login" CTAs on the right.
-* **Hero Section:** Deep gradient background (`from-slate-900 via-[#1e293b] to-[#1e3a8a]`), large centered Bengali headline in crisp white, floating subject badges with icons, dual CTAs ("Student Portal" & "Admission চলছে"), animated background circles, and an authentic **Mentor Panel Avatar Strip** showing high-resolution instructor portraits with "BRAC • BUTEX • IUB Mentor Panel | ৩-৪+ বছর অভিজ্ঞতা".
+* **Navbar:** Solid frosted glass styling (`backdrop-blur-md bg-white/95 border-b border-slate-200/80 shadow-xs`), official branded 3D isometric cube logo (`/logo.svg`), responsive single-line brand title (`whitespace-nowrap`), centered navigation anchors with bilingual translations, compact segmented language toggle pill (`[ বাং | EN ]`), and "Student Login" / "Admin Login" CTAs on the right.
+* **Hero Section:** Clean, focused hero layout with deep gradient background (`from-slate-900 via-[#1e293b] to-[#1e3a8a]`), large centered headline in crisp white, floating subject badges with icons, dual CTAs ("Student Portal" & "Admission চলছে"), and generous responsive padding (`pt-28 sm:pt-32 pb-16 md:pb-24`) eliminating layout overlap on mobile viewports.
+* **Branded Favicon & Tab Identity:** Browser tabs feature the authentic A-Cube Academy 3D vector logo (`/favicon.svg` & `/logo.svg`) with theme color matching institute palette.
 * **Subject Cards (3-Column Grid):**
   * **Physics:** Soft blue icon badge, Atom illustration, Instructor Akash (BRAC CSE), core topics, official photo avatar, signature punchline badge: *"Physics নিয়ে no চিন্তা"* (4+ Years Exp), and "View Materials" button.
   * **Math:** Soft emerald icon badge, Calculator illustration, Instructor Sabbir (BUTEX TMDM), core topics, official photo avatar, signature punchline badge: *"এখন Mathematics হবে আরও Easy"* (3.5+ Years Exp), and "View Materials" button.

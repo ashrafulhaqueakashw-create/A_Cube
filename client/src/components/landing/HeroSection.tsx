@@ -24,7 +24,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#1e3a8a]">
+    <section id="home" className="relative min-h-[85vh] flex items-center pt-28 sm:pt-32 pb-16 md:pb-24 overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#1e3a8a]">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
@@ -98,41 +98,6 @@ export default function HeroSection() {
             >
               {t('hero.ctaSecondary', 'Admission চলছে')}
             </Button>
-          </motion.div>
-
-          {/* Social proof & instructor panel highlight */}
-          <motion.div 
-            variants={itemVariants}
-            className="mt-12 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-4 text-slate-300"
-          >
-            <div className="flex -space-x-3 overflow-hidden p-1">
-              <img 
-                className="inline-block h-12 w-12 rounded-full ring-2 ring-blue-400 object-cover object-top shadow-md" 
-                src="/images/teachers/akash-physics.jpg" 
-                alt="Ashraful Haque Akash" 
-              />
-              <img 
-                className="inline-block h-12 w-12 rounded-full ring-2 ring-amber-400 object-cover object-top shadow-md" 
-                src="/images/teachers/sabbir-math.jpg" 
-                alt="Mosfer Hosen Sabbir" 
-              />
-              <img 
-                className="inline-block h-12 w-12 rounded-full ring-2 ring-purple-400 object-cover object-top shadow-md" 
-                src="/images/teachers/ahsun-ict.jpg" 
-                alt="Azmain Hasan Ahsun" 
-              />
-            </div>
-            <div className="text-left font-hind">
-              <p className="font-bold text-white text-sm md:text-base flex items-center gap-2">
-                <span>BRAC • BUTEX • IUB মেন্টর প্যানেল</span>
-                <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                  ৩-৪+ বছর অভিজ্ঞতা
-                </span>
-              </p>
-              <p className="text-xs md:text-sm text-slate-400">
-                Physics, Math ও ICT বিষয়ে বেসিক থেকে এডভান্সড কনসেপ্ট ক্লিয়ারিং
-              </p>
-            </div>
           </motion.div>
         </motion.div>
       </div>

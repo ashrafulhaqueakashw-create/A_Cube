@@ -50,16 +50,20 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300',
+        'fixed top-0 w-full z-50 transition-all duration-300 border-b',
         isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-sm py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-white/95 backdrop-blur-md shadow-md py-2.5 sm:py-3.5 border-slate-200/90'
+          : 'bg-white/90 backdrop-blur-md shadow-xs py-3 sm:py-4 border-slate-200/60'
       )}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <GraduationCap className="h-8 w-8 text-primary" />
-          <span className="font-bold text-xl md:text-2xl text-primary tracking-tight">
+      <div className="container mx-auto px-3 sm:px-6 flex items-center justify-between gap-2">
+        <Link to="/" className="flex items-center gap-2 sm:gap-2.5 shrink-0 group min-w-0">
+          <img 
+            src="/logo.svg" 
+            alt="A-Cube Academy" 
+            className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 object-contain rounded-lg shadow-xs group-hover:scale-105 transition-transform shrink-0" 
+          />
+          <span className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl text-primary tracking-tight whitespace-nowrap">
             A-Cube Academy
           </span>
         </Link>
@@ -109,11 +113,12 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-2 sm:gap-3 md:hidden shrink-0">
           <LanguageToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-slate-700 p-1"
+            className="text-slate-700 hover:text-primary p-1.5 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+            aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

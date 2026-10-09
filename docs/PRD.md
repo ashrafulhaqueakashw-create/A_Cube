@@ -38,20 +38,21 @@ A-Cube Academy is a modern, high-performance web platform designed to serve as b
 
 ### 3.1 Public Marketing Portal (Unauthenticated)
 
-#### FR-PUB-01: Sticky Navigation Bar
-* **Branding:** Displays the "A-Cube Academy" logo text and graduation icon.
+#### FR-PUB-01: Sticky Navigation Bar & Browser Identity
+* **Branding:** Displays the authentic 3D isometric vector logo (`/logo.svg`) alongside "A-Cube Academy" with `whitespace-nowrap` wrapping protection.
+* **Browser Tab Favicon:** Displays vector logo (`/favicon.svg` / `/logo.svg`) in browser tabs, URLs, and mobile bookmarks.
 * **Navigation Links:** Smooth scroll anchors to `#home`, `#about`, `#subjects`, `#teachers`, `#features`, `#contact`.
 * **Action CTAs:** Prominent "Student Login" (filled primary) and "Admin Login" (outline) buttons.
-* **Language Switcher:** Interactive button to toggle between Bengali (`BN`) and English (`EN`) across the entire website.
+* **Language Switcher:** Compact segmented interactive toggle pill (`[ বাং | EN ]`) with persistent `localStorage` storage.
 * **Mobile Drawer:** Hamburger icon triggers a slide-out navigation sheet on viewport width < 1024px.
-* **State Behavior:** Transitions from transparent/light to frosted shadow blur upon scroll offset > 20px.
+* **State Behavior:** Maintains consistent solid frosted glass styling (`bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs`) preventing text clipping or jarring layout shifts on mobile scrolling.
 
 #### FR-PUB-02: Hero Section
 * **Headline:** *"HSC + Admission প্রস্তুতির নতুন ঠিকানা"*
 * **Supporting Tagline:** *"Physics, Math ও ICT — Basic থেকে Advanced পর্যন্ত Concept Clear করে Smart ও Structured Learning."*
 * **CTAs:** Primary CTA "Student Portal" (directs to login/dashboard), Secondary CTA "Admission চলছে" (scrolls to contact/admission details).
 * **Subject Pills:** Floating interactive badges highlighting Physics, Math, and ICT.
-* **Visual Aesthetic:** Framer motion stagger animations, subtle gradient backdrop, professional academic tone.
+* **Visual Aesthetic:** Framer motion stagger animations, subtle gradient backdrop, professional academic tone with generous mobile top padding (`pt-28 sm:pt-32 pb-16 md:pb-24`) preventing navbar content overlap.
 
 #### FR-PUB-03: Academy Introduction ("About")
 * **Concept Clarification:** Highlights the core pedagogical philosophy—concept clarity before formula memorization.

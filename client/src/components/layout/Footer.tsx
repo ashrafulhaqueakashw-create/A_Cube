@@ -11,8 +11,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2 text-white">
-              <GraduationCap className="h-8 w-8 text-secondary" />
+            <Link to="/" className="flex items-center gap-2.5 text-white">
+              <img src="/logo.svg" alt="A-Cube Academy" className="h-8 w-8 object-contain rounded-lg" />
               <span className="font-bold text-2xl tracking-tight">
                 A-Cube Academy
               </span>

@@ -17,13 +17,13 @@ const LanguageToggle: React.FC = () => {
   };
 
   return (
-    <div className="inline-flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 rounded-full border border-slate-200 dark:border-slate-700 shadow-xs">
-      <Globe className="w-3.5 h-3.5 ml-2 mr-1 text-slate-500 shrink-0" />
+    <div className="inline-flex items-center bg-slate-100/90 dark:bg-slate-800 p-0.5 rounded-full border border-slate-200 dark:border-slate-700 shadow-xs shrink-0">
+      <Globe className="w-3 h-3 ml-1.5 mr-0.5 text-slate-500 shrink-0 hidden xs:inline-block" />
       <button
         type="button"
         onClick={() => setLanguage('bn')}
         className={cn(
-          "px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer font-hind",
+          "px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer font-hind",
           isBangla
             ? "bg-primary text-white shadow-xs font-bold"
             : "text-slate-600 hover:text-slate-900"
@@ -36,7 +36,7 @@ const LanguageToggle: React.FC = () => {
         type="button"
         onClick={() => setLanguage('en')}
         className={cn(
-          "px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer",
+          "px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer",
           !isBangla
             ? "bg-primary text-white shadow-xs font-bold"
             : "text-slate-600 hover:text-slate-900"
